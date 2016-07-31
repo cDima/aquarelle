@@ -7,271 +7,19 @@
 <body>
 
 <script src="bower_components/three.js/build/three.js"></script>
-
 <script src="bower_components/aquarelle/Aquarelle.js"></script>
-
 <script src="bower_components/three.js/examples/js/postprocessing/EffectComposer.js"></script>
-
 <script src="bower_components/three.js/examples/js/postprocessing/ClearPass.js"></script>
 <script src="bower_components/aquarelle/AquarellePass.js"></script>
 <script src="bower_components/three.js/examples/js/postprocessing/ShaderPass.js"></script>
 <script src="bower_components/three.js/examples/js/shaders/CopyShader.js"></script>
-
 <script src="https://bl.ocks.org/mbostock/raw/4241134/d3.geom.contour.min.js"></script>
+
+<script src="bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
 
 <link rel='stylesheet' id='tt-easy-google-fonts-css'  href='http://fonts.googleapis.com/css?family=Alegreya%3Aregular&#038;subset=latin&#038;ver=4.5.3' type='text/css' media='all' />
 
-<style>
-
-    html {
-        background-image: url(img/bg.png);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        display: -webkit-flex;
-        display: flex;
-        min-height: 100%;
-    }
-
-    body {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1);
-        margin: 44px 44px 44px;
-        position: relative;
-        width: 100%;
-    }
-
-    .fade {
-        opacity: 0;
-    }
-
-    .menu a, 
-    .menu  a:visited {
-        color: #666;
-        font-size: 0.7em;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        text-decoration: initial;
-        font-family: arial, verdana;
-        font-weight: 100;
-        margin: 0 10px;
-        display: inline-block;
-    }
-    .menu a:hover,
-    .menu a:active, {
-        color: black;
-    }
-
-    header {
-        position: relative;
-        overflow: hidden;
-    }
-    canvas {
-        /*left: 50%;
-        top: 50%;
-        max-height: 100%;
-        max-width: 100%;
-        position: absolute;
-        */
-        
-        height: 50%;
-        width: 50%;
-        pointer-events: none;
-    }
-    .logo {
-        background-image: url(img/logo.png);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        height: 27px;
-        left: 30px;
-        position: absolute;
-        top: 24px;
-        width: 29px;
-    }
-    .menu {
-        height: 7px;
-        position: absolute;
-        right: 36px;
-        top: 29px;
-        width: 253px;
-    }
-    .title {
-        background-image: url(img/title.png);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        height: 38px;
-        left: 50%;
-        margin-left: -124px;
-        margin-top: -19px;
-        position: absolute;
-        top: 50%;
-        width: 248px;
-    }
-
-    .buttons {
-        display: -webkit-flex;
-        display: flex;
-        -webkit-justify-content: space-between;
-        justify-content: space-between;
-        left: 50%;
-        margin-left: -115px;
-        margin-top: 40px;
-        position: absolute;
-        top: 50%;
-        width: 230px;
-    }
-    .icon {
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        height: 56px;
-        width: 56px;
-    }
-
-    .slow-blur {
-       -webkit-filter: blur(16px);
-       animation: blurout 10s 1;
-    }
-
-    @keyframes blurout {
-        0% {
-            -webkit-filter: blur(0px);
-        }
-        50% {
-            -webkit-filter: blur(0px);
-        }
-        100% {
-            -webkit-filter: blur(16px);
-        }
-    }
-
-        
-    ::-webkit-scrollbar-track
-    {
-        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
-        border-radius: 5px;
-        background-color: #F5F5F5;
-    }
-
-    ::-webkit-scrollbar
-    {
-        width: 8px;
-        background-color: #F5F5F5;
-    }
-
-    ::-webkit-scrollbar-thumb
-    {
-        border-radius: 10px;
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-        background-color: #555;
-    }
-
-    hr {
-        display: block;
-        border: 0px;
-        height: 34px;
-        background-image: url('img/hr.png');
-        width: 458px;
-        opacity: 0.2;
-        transform: scale(0.6);
-    }
-
-    article {
-        font-family: 'Alegreya';
-    }
-    section {
-        padding: 40px 60px;
-    }
-
-    .gallery-background {
-        background: #ccc;
-        margin: 50px 0;
-        position: relative;
-        overflow: hidden;
-        letter-spacing: 0.1em;
-        color: white;
-    }
-    .gallery-img {
-        background-image: url(gallery/macaroons1.jpg);
-        background-size: cover;
-        height: 120%;
-        /* z-index: 0; */
-        margin: -60px;
-        position: absolute;
-        top: 0;
-        opacity: 0.2;
-        -webkit-filter: blur(20px);
-        -moz-filter: blur(20px);
-        filter: blur(20px);
-        width: 120%;
-    }
-    .shim {
-        z-index: 1000;
-    }
-    .topshim {
-        z-index: 1001;
-        position: relative;
-    }
-    .bg-grad-shim {
-        background: linear-gradient(to bottom, rgba(41,47,51,0.34) 20%, #292f33);
-        position: absolute;
-        top: 0;
-        height: 120%;
-        z-index: 1;
-        width: 120%;
-        margin: -60px;
-    }
-
-    .gallery {
-        margin: 0;
-        overflow: hidden;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-content:  space-between;
-        position: relative;
-        z-index: 99;
-        flex-wrap: wrap;
-    }
-    .gallery figure {
-        flex-basis: auto;
-        width: 25%;
-    }
-    .gallery figure img {
-        max-width:100%;
-        max-height:100%;
-        box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
-    }
-    .gallery h, .gallery p {
-    }
-
-    p, h2 {
-        max-width: 600px;
-        margin: 0 auto;
-    }
-    p {
-        font-size: 1.2em;
-        line-height: 2.1em;
-        padding: 20px 0;
-    }
-
-    footer {
-        color: #aaa;
-        font-size: 0.7em;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        text-decoration: initial;
-        font-family: arial, verdana;
-        font-weight: 100;
-        margin: 0 10px;
-        display: inline-block;
-        float: right;
-        padding: 20px 40px;
-    } 
-</style>
+<link rel="stylesheet" type="text/css" href="css/main.css" media="all">
 
 <div class="fade">
     <header>
@@ -279,9 +27,9 @@
     <div class="top">
         <div class="logo"></div>
         <nav class="menu">
-            <a href="#gallery">gallery</a>
-            <a href="#about">about</a>
-            <a href="#contact">contact</a>
+            <a href="#gallery" data-scroll>gallery</a>
+            <a href="#social" data-scroll>social</a>
+            <a href="#contact" data-scroll>contact</a>
         </nav>
         <div class="title"></div>
         <div class="buttons">
@@ -300,72 +48,163 @@
     Can’t wait to make your days sweeter!)</p>
         </section>
         <hr />
-        <section class="gallery-background">
+        <section class="gallery-background" id="gallery">
             <div class="topshim"> 
                 <h2>Gallery</h2>
                 <p>Here you can see some examples of our work. Every cake is made individually for each customer.</p>
 
                 <div class="gallery">
+                    
                     <figure>
-                        <img src="gallery/macaroons1.jpg" />
+                        <img src="gallery/600px/macaroons1.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/macaroons1.jpg 300w,
+                                gallery/600px/macaroons1.jpg 600w,
+                                gallery/900px/macaroons1.jpg 900w"
+                        />
                         <figcaption>Macaroons with matcha tea</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/macaroons2.jpg" />
+                        <img src="gallery/600px/macaroons2.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/macaroons2.jpg 300w,
+                                gallery/600px/macaroons2.jpg 600w,
+                                gallery/900px/macaroons2.jpg 900w"
+                        />
                         <figcaption>Macaroons with earl grey tea</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/RussianHoneyCake.jpg" />
+                        <img src="gallery/600px/RussianHoneyCake.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/RussianHoneyCake.jpg 300w,
+                                gallery/600px/RussianHoneyCake.jpg 600w,
+                                gallery/900px/RussianHoneyCake.jpg 900w"
+                        />
                         <figcaption>Russian Honey Cake. Recipe from my mom, so this is a try taste of this cake! And a big Favorite of our customers!</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/Ibiza-for-Albina.jpg" />
+                        <img src="gallery/600px/Ibiza-for-Albina.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/Ibiza-for-Albina.jpg 300w,
+                                gallery/600px/Ibiza-for-Albina.jpg 600w,
+                                gallery/900px/Ibiza-for-Albina.jpg 900w"
+                        />
                         <figcaption>IBIZA cake. The recipe of the best patisserie Pierre Herme. This cake with pistachio dacquoise and with a light orange mousse and another mousse with homemade pistachio nougat. With almond nougatine finish. Delicious!</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/lavander-and-blueberry.jpg" />
+                        <img src="gallery/600px/lavander-and-blueberry.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/lavander-and-blueberry.jpg 300w,
+                                gallery/600px/lavander-and-blueberry.jpg 600w,
+                                gallery/900px/lavander-and-blueberry.jpg 900w"
+                        />
                         <figcaption>Angel cake. Light vanilla cake with lavender sirup and blueberry covered with cloud of cream</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/3.jpg" />
+                        <img src="gallery/600px/RussianHoneyCake.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/3.jpg 300w,
+                                gallery/600px/3.jpg 600w,
+                                gallery/900px/3.jpg 900w"
+                        />
                         <figcaption>Angel cake. This is a light sponge with rose water and raspberry homemade jam under a delicate cream cheese</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/1.jpg" />
+                        <img src="gallery/600px/1.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/1.jpg 300w,
+                                gallery/600px/1.jpg 600w,
+                                gallery/900px/1.jpg 900w"
+                        />
                         <figcaption>Esterhazy torte. You can find light merengue with walnuts and light butter cream with cherry flavored cognac! It is sweet and delicate</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/2.jpg" />
+                        <img src="gallery/600px/2.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/2.jpg 300w,
+                                gallery/600px/2.jpg 600w,
+                                gallery/900px/2.jpg 900w"
+                        />
                         <figcaption>Tres leches with thin layer of cheese cream and fresh raspberry</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/cheesecake.jpg" />
+                        <img src="gallery/600px/cheesecake.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/cheesecake.jpg 300w,
+                                gallery/600px/cheesecake.jpg 600w,
+                                gallery/900px/cheesecake.jpg 900w"
+                        />
                         <figcaption>Cheesecake with homemade strawberry jam</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/Pavlova.jpg" />
+                        <img src="gallery/600px/Pavlova.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/Pavlova.jpg 300w,
+                                gallery/600px/Pavlova.jpg 600w,
+                                gallery/900px/Pavlova.jpg 900w"
+                        />
                         <figcaption>Pavlova cake.
 This is a weightless like a cloud, fragile with a light cheese cream, raspberries, sunny peach and interesting note of basil</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/Pistashio-for-Anna.jpg" />
+                        <img src="gallery/600px/Pistashio-for-Anna.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/Pistashio-for-Anna.jpg 300w,
+                                gallery/600px/Pistashio-for-Anna.jpg 600w,
+                                gallery/900px/Pistashio-for-Anna.jpg 900w"
+                        />
                         <figcaption>Pistachio with raspberry cake</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/Profiteroles.jpg" />
+                        <img src="gallery/600px/Profiteroles.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/Profiteroles.jpg 300w,
+                                gallery/600px/Profiteroles.jpg 600w,
+                                gallery/900px/Profiteroles.jpg 900w"
+                        />
                         <figcaption>Profiteroles with an orange creme. They are incredible!!!</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/Tres-Leche.jpg" />
+                        <img src="gallery/600px/Tres-Leche.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/Tres-Leche.jpg 300w,
+                                gallery/600px/Tres-Leche.jpg 600w,
+                                gallery/900px/Tres-Leche.jpg 900w"
+                        />
                         <figcaption>Tres leches with thin layers of cheese cream</figcaption>
                     </figure>
                     <figure>
-                        <img src="gallery/Sacher.jpg" />
+                        <img src="gallery/600px/Sacher.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/Sacher.jpg 300w,
+                                gallery/600px/Sacher.jpg 600w,
+                                gallery/900px/Sacher.jpg 900w"
+                        />
                         <figcaption>Sacher torte. It is became a traditional Austrian cake. Full of dark chocolate and thin layers of homemade apricot jam.</figcaption>
                     </figure>
                     
                     <figure>
-                        <img src="gallery/Vanilla-Rufina.jpg" />
+                        <img src="gallery/600px/Vanilla-Rufina.jpg"
+                             sizes="300px"
+                             srcset="
+                                gallery/300px/Vanilla-Rufina.jpg 300w,
+                                gallery/600px/Vanilla-Rufina.jpg 600w,
+                                gallery/900px/Vanilla-Rufina.jpg 900w"
+                        />
                         <figcaption>Vanilla cake. With almond sponge, bavarian vanilla mousse and cream brulee.</figcaption>
                     </figure>
                     
@@ -377,7 +216,7 @@ This is a weightless like a cloud, fragile with a light cheese cream, raspberrie
         </section>
 
         <hr />
-        <section>
+        <section id="contact">
             <h2>Our Cakes </h2>
             <p>Everybody has their special life events requiring unique and special cakes, which is exactly what we offer – cakes to perfectly fit any occasion of your life.</p>
 
@@ -388,7 +227,7 @@ This is a weightless like a cloud, fragile with a light cheese cream, raspberrie
             <p>They come complete with special notes of creativity. We use fresh berries, fruits, spices and flowers to find your personal version of the best custom cakes.</p>
         </section>
 
-        <section >
+        <section id="social" >
             <div style="text-align: center; width:500px; float: right">
                 <iframe style="border: none; overflow: hidden;" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcakesandsweettreatsyulias%2F&amp;tabs=timeline&amp;width=1000&amp;height=1000&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId=1542736452668749" width="500" height="1000" frameborder="0" scrolling="no"></iframe>
             </div>
@@ -410,55 +249,11 @@ This is a weightless like a cloud, fragile with a light cheese cream, raspberrie
     </footer>
 </div>
 
+
+<script src="js/main.js"></script>
+
 <script>
-
-    var fade = document.querySelector('.fade');
-    var topNav = document.querySelector('.top');
-    var title = document.querySelector('.title');
-    var buttons = document.querySelector('.buttons');
-    var icons = Array.prototype.slice.call(document.querySelectorAll('.icon'));
-    var article = document.querySelector('.main-content');
-    var image = document.querySelector('.splash');
-    var aquarelle = new Aquarelle(image, 'img/mask.png', {
-        autoplay: true,
-        loop: false
-    });
-
-    var thecanvas = null;
-
-    aquarelle.addEventListener('created', function() {
-        // replace image with canvas.
-        thecanvas = this.getCanvas();
-        thecanvas.removeAttribute('style');
-        //thecanvas.classList.add('slow-blur');
-        image.parentNode.insertBefore(thecanvas, image.nextSibling);
-        image.parentNode.removeChild(image);
-    });
-
-    aquarelle.addEventListener('changed', function(event) {
-        //fade.style.opacity = this.transitionInRange(1, 0, 7183, 7933);
-        fade.style.opacity = 1;
-
-        topNav.style.opacity = this.transitionInRange(0, 1, 4330, 5660);
-
-        thecanvas.style.webkitFilter = 'blur(' + this.transitionInRange(0, 17, 3000) + 'px)';
-        thecanvas.style.webkitTransform = thecanvas.style.transform = 'translate(50%, 0%)' 
-                + ' scale(' + this.transitionInRange(.75, 1) + ')'
-                ;
-
-        title.style.opacity = this.transitionInRange(0, 1, 0, 2016);
-        title.style.webkitTransform = title.style.transform = 'scale(' + this.transitionInRange(.8, 1, 0, 5883) + ')';
-
-        icons.forEach(function(icon) {
-            icon.style.webkitFilter = 'blur(' + event.target.transitionInRange(4, 0, 3433, 4149) + 'px)';
-            icon.style.opacity = event.target.transitionInRange(0, 1, 3433, 4266);
-            icon.style.webkitTransform = icon.style.transform = 'scale(' + event.target.transitionInRange(1.3, 1, 3433, 4400) + ')';
-        });
-
-        //article.style.opacity = this.transitionInRange(0, 1, 5000, 6000);
-
-    });
-
+    smoothScroll.init();
 </script>
 </body>
 </html>

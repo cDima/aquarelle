@@ -6,7 +6,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "aquarelle": "*"
+    "aquarelle": "*",
+    "smooth-scroll": "https://github.com/cferdinandi/smooth-scroll.git#^9.1.4"
   },
   "ignore": [
     "**/.*",
