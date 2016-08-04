@@ -1,7 +1,5 @@
 #/bower_components/
 
-examples/
 docs/
 src/
-build/
 *.json
