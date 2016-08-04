@@ -1,1 +1,7 @@
-/bower_components/
+#/bower_components/
+
+examples/
+docs/
+src/
+build/
+*.json
