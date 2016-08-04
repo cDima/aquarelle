@@ -1,3 +1,3 @@
 # Sadakova.com
 
-[![preview](./Screenshots/sadakovav1.jpg)](https://sadakova.com/)
+[![preview](./Screenshots/sadakova v1.gif)](https://sadakova.com/)
