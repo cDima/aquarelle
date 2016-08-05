@@ -11,6 +11,12 @@ var aquarelle = new Aquarelle(image, 'img/mask.png', {
 });
 
 var thecanvas = null;
+var blursCountMax = 10;
+var blursCountNow = 0;
+
+// 3 blurs was too much, perhaps these values would decrease blur amount by 100.
+THREE.HorizontalBlurShader.uniforms.h.value = THREE.HorizontalBlurShader.uniforms.h.value / 2;
+THREE.VerticalBlurShader.uniforms.v.value = THREE.VerticalBlurShader.uniforms.v.value / 2;
 
 aquarelle.addEventListener('created', function() {
     // replace image with canvas.
@@ -27,7 +33,18 @@ aquarelle.addEventListener('changed', function(event) {
 
     topNav.style.opacity = this.transitionInRange(0, 1, 4330, 5660);
 
-    thecanvas.style.webkitFilter = 'blur(' + this.transitionInRange(0, 17, 3000) + 'px)';
+    var composer = aquarelle.getComposer();
+    var blurs = this.transitionInRange(0, blursCountMax, 3000);
+    if (blursCountNow < blursCountMax && blursCountNow < blurs) { // add one 
+    	composer.passes[composer.passes.length - 1].renderToScreen = false;
+    	blursCountNow++;
+	composer.addPass( new THREE.ShaderPass( THREE.HorizontalBlurShader ) );
+	var vblur = new THREE.ShaderPass( THREE.VerticalBlurShader );
+	vblur.renderToScreen = true;
+	composer.addPass( vblur );
+    }
+    
+    //thecanvas.style.webkitFilter = 'blur(' + this.transitionInRange(0, 17, 3000) + 'px)';
     thecanvas.style.webkitTransform = thecanvas.style.transform = 'translate(50%, 0%)' 
             + ' scale(' + this.transitionInRange(.75, 1) + ')'
             ;
