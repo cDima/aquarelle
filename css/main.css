@@ -70,15 +70,20 @@
         position: relative;
         overflow: hidden;
     }
+    .top .logo {
+        left: 30px;
+        position: absolute;
+        top: 24px;
+    }
+    .backtotop .logo {
+        margin: 0 auto;
+    }
     .logo {
         background-image: url(../img/logo.png);
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
         height: 27px;
-        left: 30px;
-        position: absolute;
-        top: 24px;
         width: 29px;
     }
     .title {
