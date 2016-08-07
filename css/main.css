@@ -21,25 +21,45 @@
             margin: 5% auto;
         }
 
+    canvas {        
+        height: 50%;
+        width: 50%;
+        pointer-events: none;
+        min-height: 350px;
+        margin: 0 auto;
+        display: block;
+    }
+    
     @media screen and (max-width: 1200px) {
         body {
             margin: 50px;
         }
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 700px), (max-device-width : 700px)  {
         body {
             margin: 0;
             border-radius: 0;
         }
+        canvas {
+            height: 100%;
+            width: 100%;
+        }
     }
 
-    
 
     .fade {
         opacity: 0;
     }
 
+    .menu {
+        height: 7px;
+        position: absolute;
+        right: 36px;
+        top: 29px;
+        max-width: 70%;
+        text-align: right;
+    }
     .menu a, 
     .menu  a:visited {
         color: #666;
@@ -61,12 +81,6 @@
         position: relative;
         overflow: hidden;
     }
-    canvas {        
-        height: 50%;
-        width: 50%;
-        pointer-events: none;
-        min-height: 350px;
-    }
     .logo {
         background-image: url(../img/logo.png);
         background-position: center;
@@ -77,12 +91,6 @@
         position: absolute;
         top: 24px;
         width: 29px;
-    }
-    .menu {
-        height: 7px;
-        position: absolute;
-        right: 36px;
-        top: 29px;
     }
     .title {
         background-image: url(../img/title.png);
@@ -169,6 +177,9 @@
         width: 458px;
         opacity: 0.2;
         transform: scale(0.6);
+        max-width: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 
     article {
@@ -321,7 +332,10 @@
 a, a:visited, a:hover {
     color: black;
     text-align: center;
+}
+.contact a {
     text-decoration: none;
+    white-space: nowrap;
 }
 a:hover {
     color: black;
@@ -337,3 +351,5 @@ a:hover {
     /*-webkit-filter: blur(0);*/
     /*filter: blur(0);*/
 /*}*/
+
+

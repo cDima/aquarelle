@@ -45,9 +45,7 @@ aquarelle.addEventListener('changed', function(event) {
     }
     
     //thecanvas.style.webkitFilter = 'blur(' + this.transitionInRange(0, 17, 3000) + 'px)';
-    thecanvas.style.webkitTransform = thecanvas.style.transform = 'translate(50%, 0%)' 
-            + ' scale(' + this.transitionInRange(.75, 1) + ')'
-            ;
+    thecanvas.style.webkitTransform = thecanvas.style.transform = 'scale(' + this.transitionInRange(.75, 1) + ')';
 
     title.style.opacity = this.transitionInRange(0, 1, 0, 2016);
     title.style.webkitTransform = title.style.transform = 'scale(' + this.transitionInRange(.8, 1, 0, 5883) + ')';
