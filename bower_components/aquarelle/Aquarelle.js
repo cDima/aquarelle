@@ -60,6 +60,7 @@ d3.geom = d3.geom || {};
             self.reset();
 
             self.isInitialized = true;
+            self.IsStopping = false;
             self.frame();
         });
 
@@ -199,10 +200,10 @@ d3.geom = d3.geom || {};
         this.dispatchEvent(this.getEventObject('played'));
     };
     Aquarelle.prototype.fastfarward = function() {
-        if(this.progress === +(this.direction >= 0) && this.isPaused) {
+        if (this.IsStopping) {
             return;
         }
-
+        this.IsStopping = true;
         this.progress = +(this.direction >= 0) - 0.000000009; // fast farward
     }
     Aquarelle.prototype.stop = function() {
