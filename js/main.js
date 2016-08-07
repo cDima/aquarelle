@@ -62,19 +62,15 @@ aquarelle.addEventListener('changed', function(event) {
 
 smoothScroll.init();
 
+var lazeLoad = false;
 
-window.lazySizesConfig = {
-	addClasses: true
-};
+if (lazeLoad) {
+    window.lazySizesConfig = {
+        addClasses: true
+    };
 
-new LazyLoad({
-    data_src: 'src',
-    data_srcset: 'srcset'
-});
-
-
-/*$('.add-new').on('click', function(){
-    var $template = $('.template');
-    $template.after($template.html());
-});
-*/
+    new LazyLoad({
+        data_src: 'src',
+        data_srcset: 'srcset'
+    });
+}
