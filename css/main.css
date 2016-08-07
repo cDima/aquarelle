@@ -29,7 +29,7 @@
         margin: 0 auto;
         display: block;
     }
-    
+
     @media screen and (max-width: 1200px) {
         body {
             margin: 50px;
@@ -315,14 +315,17 @@
     display: block;
     float: left;
 }
-.ico.i-email{
-    background-image: url(../img/icon01.png);
+.i-email{
+    background-image: url(../img/icon-email.png);
 }
-.ico.i-chat{
-    background-image: url(../img/icon02.png);
+.i-chat{
+    background-image: url(../img/icon-chat.png);
 }
-.ico.i-facebook{
-    background-image: url(../img/icon04.png);
+.i-fb{
+    background-image: url(../img/icon-fb.png);
+}
+.i-insta{
+    background-image: url(../img/icon-insta.png);
 }
 .contact a {
     display: inline-block;
