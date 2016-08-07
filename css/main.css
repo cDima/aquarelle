@@ -2,12 +2,19 @@
 
     html {
         background-image: url(../img/bg.jpg);
+        background-size: cover;
+        
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover;
         display: -webkit-flex;
         display: flex;
         min-height: 100%;
+        
+        
+        /*
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        */
     }
 
 
@@ -234,10 +241,13 @@
 	transform: scale(1);
 	transition: all 700ms;
 }
-
+#contact {
+    padding-bottom: 0px;
+}
 .contact {
-    margin: 10px auto;
-    max-width: 300px;
+    margin: 0px auto;
+    max-width: 240px;
+    padding-bottom: 40px;
 }
 .ico {
     background-position: center;
@@ -292,7 +302,8 @@ a:hover {
 
     @media screen and (max-width: 1200px) {
         body {
-            margin: 50px;
+            margin: 5% 5%;
+            max-width: 90%;
         }
     }
     
@@ -308,12 +319,17 @@ a:hover {
         .menu a {
             margin: 0 5px;
         }
+        section{
+            padding: 40px 40px;
+        }
     }
 
-    @media screen and (max-width: 300px), (max-device-width : 200px)  {
+    @media screen and (max-width: 300px), (max-device-width : 300px)  { 
+        /* (max-device-width : 250px)  */
         body {
             margin: 0;
             border-radius: 0;
+            max-width: 100%;
         }
         canvas {
             height: 100%;
