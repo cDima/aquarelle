@@ -57,6 +57,11 @@ aquarelle.addEventListener('changed', function(event) {
     });
 });
 
+aquarelle.addEventListener('completed', function(event) {
+    thecanvas = null;
+    aquarelle = null;
+})
+
 
 smoothScroll.init();
 
