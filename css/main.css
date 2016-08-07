@@ -295,8 +295,22 @@ a:hover {
             margin: 50px;
         }
     }
-
+    
     @media screen and (max-width: 700px), (max-device-width : 700px)  {
+        body {
+            margin: 5% 5%;
+            max-width: 90%;
+        }
+        canvas {
+            height: 100%;
+            width: 100%;
+        }
+        .menu a {
+            margin: 0 5px;
+        }
+    }
+
+    @media screen and (max-width: 300px), (max-device-width : 200px)  {
         body {
             margin: 0;
             border-radius: 0;
