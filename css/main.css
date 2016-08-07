@@ -30,24 +30,6 @@
         display: block;
     }
 
-    @media screen and (max-width: 1200px) {
-        body {
-            margin: 50px;
-        }
-    }
-
-    @media screen and (max-width: 700px), (max-device-width : 700px)  {
-        body {
-            margin: 0;
-            border-radius: 0;
-        }
-        canvas {
-            height: 100%;
-            width: 100%;
-        }
-    }
-
-
     .fade {
         opacity: 0;
     }
@@ -127,27 +109,6 @@
         width: 56px;
     }
     
-    img:not([src]):not([srcset]) {
-        visibility: hidden;
-    }
-
-    .slow-blur {
-       -webkit-filter: blur(16px);
-       animation: blurout 10s 1;
-    }
-
-    @keyframes blurout {
-        0% {
-            -webkit-filter: blur(0px);
-        }
-        50% {
-            -webkit-filter: blur(0px);
-        }
-        100% {
-            -webkit-filter: blur(16px);
-        }
-    }
-
         
     ::-webkit-scrollbar-track
     {
@@ -190,44 +151,14 @@
     }
 
     .gallery-background {
-        background: #ccc;
+        background: #505050;
         margin: 50px 0;
         position: relative;
         overflow: hidden;
         letter-spacing: 0.1em;
         color: white;
     }
-    .gallery-img {
-        background-image: url(../gallery/600px/macaroons1.jpg);
-        background-size: cover;
-        height: 120%;
-        /* z-index: 0; */
-        margin: -60px;
-        position: absolute;
-        top: 0;
-        opacity: 0.2;
-        -webkit-filter: blur(20px);
-        -moz-filter: blur(20px);
-        filter: blur(20px);
-        width: 120%;
-    }
-    .shim {
-        z-index: 1000;
-    }
-    .topshim {
-        z-index: 1001;
-        position: relative;
-    }
-    .bg-grad-shim {
-        background: linear-gradient(to bottom, rgba(41,47,51,0.34) 20%, #292f33);
-        position: absolute;
-        top: 0;
-        height: 120%;
-        z-index: 1;
-        width: 120%;
-        margin: -60px;
-    }
-
+    
     .gallery {
         margin: 0;
         overflow: hidden;
@@ -358,3 +289,56 @@ a:hover {
 /*}*/
 
 
+
+    @media screen and (max-width: 1200px) {
+        body {
+            margin: 50px;
+        }
+    }
+
+    @media screen and (max-width: 700px), (max-device-width : 700px)  {
+        body {
+            margin: 0;
+            border-radius: 0;
+        }
+        canvas {
+            height: 100%;
+            width: 100%;
+        }
+        section {
+            padding: 40px 30px;
+        }
+    }
+
+    
+    @media screen and (min-width: 1200px) {
+        .gallery-img {
+            background-image: url(../gallery/600px/macaroons1.jpg);
+            background-size: cover;
+            height: 120%;
+            margin: -60px;
+            position: absolute;
+            top: 0;
+            opacity: 0.2;
+            -webkit-filter: blur(20px);
+            -moz-filter: blur(20px);
+            filter: blur(20px);
+            width: 120%;
+        }
+        .shim {
+            z-index: 1000;
+        }
+        .topshim {
+            z-index: 1001;
+            position: relative;
+        }
+        .bg-grad-shim {
+            background: linear-gradient(to bottom, rgba(41,47,51,0.34) 20%, #292f33);
+            position: absolute;
+            top: 0;
+            height: 120%;
+            z-index: 1;
+            width: 120%;
+            margin: -60px;
+        }
+    }
