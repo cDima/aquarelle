@@ -60,6 +60,7 @@ d3.geom = d3.geom || {};
             self.reset();
 
             self.isInitialized = true;
+            self.frame();
         });
 
         stack.push(self);
@@ -197,6 +198,13 @@ d3.geom = d3.geom || {};
 
         this.dispatchEvent(this.getEventObject('played'));
     };
+    Aquarelle.prototype.fastfarward = function() {
+        if(this.progress === +(this.direction >= 0) && this.isPaused) {
+            return;
+        }
+
+        this.progress = +(this.direction >= 0) - 0.000000009; // fast farward
+    }
     Aquarelle.prototype.stop = function() {
         if(this.progress === +(this.direction >= 0) && this.isPaused) {
             return;
@@ -280,19 +288,23 @@ d3.geom = d3.geom || {};
         duration: 8000
     };
 
-    function frame() {
+    Aquarelle.prototype.frame = function frame() {
         var time = Date.now();
         var deltaTime = time - lastTime;
 
         lastTime = time;
 
+        var allComplete = true;
         stack.forEach(function(item) {
             item.render(deltaTime / 1000);
+            allComplete = allComplete && item.isComplete();
         });
 
-        requestAnimationFrame(frame);
+        if (!allComplete) {
+            requestAnimationFrame(frame);
+        }
     }
-    frame();
+    //this.frame();
 
     window.Aquarelle = Aquarelle;
 }());

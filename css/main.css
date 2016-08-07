@@ -21,7 +21,7 @@
             margin: 5% auto;
         }
 
-    canvas {        
+    .splash, canvas {        
         height: 50%;
         width: 50%;
         pointer-events: none;
